@@ -1,0 +1,130 @@
+/*二级菜单*/
+.el-menu {
+    border-right: 0;
+    background-color: #f8f8f8;
+	.el-menu-item,
+	.el-submenu__title {
+        padding: 0 !important;
+		a,span {
+		    display: block;
+		    height: 100%;
+		    width: 100%;
+			color: #7f8c8d;
+		    font-size: 16px;
+		    padding-left: 40px;
+		}
+		.el-submenu__icon-arrow {
+			transform: rotate(-90deg);
+			transition: transform 0.4s;
+		}
+	}
+	.el-menu-item-group {
+		.el-menu-item{
+			height: 40px;
+			line-height: 40px;
+			a,span {
+			    font-size: 14px;
+			    padding-left: 60px;
+			}
+		}
+	}
+	.el-submenu__title:hover,
+	.el-menu-item:focus,
+	.el-menu-item:hover {
+		background-color: #eee;
+	}
+	.el-menu .el-menu-item-group ul li.is-active,
+	.el-menu-item.is-active {
+		color: #fff;
+	    background-color: #1abc9c;
+	    a,span {
+	    	color: #fff;
+	    }
+	}
+	.is-opened .el-submenu__title .el-submenu__icon-arrow {
+		transform: rotate(0deg);
+		transition: transform 0.4s;
+	}
+	.el-menu-item-group__title {
+		display: none;
+	}
+	.el-menu-item-group ul li.el-menu-item {
+		color: #7f8c8d;
+		.is-active {
+			color: #fff;
+		}
+		i {
+			font-size: 13px;
+			margin-right: 5px;
+		}
+	}
+}
+/*分页*/
+.breadcrumb {
+	padding-left: 0;
+	background: none;
+}
+.pagination {
+	text-align: center;
+	padding: 20px 0;
+}
+.el-pagination {
+	text-align: center;
+	button {
+		font-size: 14px;
+		height: 32px;
+		line-height: 32px;
+		width: 32px;
+	}
+	.btn-next,
+	.btn-prev {
+		border: 1px solid #ddd;
+		padding: 0 6px;
+		background: #fff;
+	}
+	.btn-prev {
+		border-radius: 5px 0 0 5px;
+		border-right: 0 none;
+	}
+	.btn-next {
+		border-left: 0 none;
+		border-radius: 0 5px 5px 0;
+	}
+	.btn-prev:hover,
+	.btn-next:hover {
+		color: #1abc9c;
+	}
+	.el-pager {
+		li {
+			font-size: 12px;
+			width: 32px;
+			height: 32px;
+			line-height: 32px;
+			background: #fff;
+			border: 1px solid #ddd;
+		}
+		li.active {
+			color: #fff;
+			border-color: #1abc9c;
+			background-color: #1abc9c;
+		}
+		li.active:hover {
+			z-index: 3;
+			color: #fff;
+			cursor: default;
+			background-color: #1abc9c;
+			border-color: #1abc9c;
+		}
+		li:hover {
+			z-index: 2;
+			color: #23527c;
+			background-color: #eee;
+			border-color: #ddd;
+			box-shadow: 0px 0 5px #999;
+		}
+		li+li {
+			border-left: 0 none;
+			padding-left: 5px;
+		}
+	}
+}

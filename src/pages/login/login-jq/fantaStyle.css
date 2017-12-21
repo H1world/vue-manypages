@@ -1,0 +1,73 @@
+/* 提示框 */
+.tip-yellow {
+  color: #fff;
+  text-align: left;
+  min-width: 40px;
+  max-width: 530px;
+  border: 1px solid #ff6b6b;
+  background-color: #ff6b6b;
+  border-radius: 5px;
+  margin-top: -6px;
+  z-index: 999999;
+}
+.tip-yellow .tip-inner {
+  font: normal 12px/18px 'trebuchet ms', arial, helvetica, sans-serif;
+  padding: 2px 5px;
+}
+/* 浮动效果 */
+.info {
+  color: #4d94be;
+  border-radius: 5px;
+  border: 1px solid #ff6b6b;
+  padding: 5px 10px 0px;
+  position: absolute;
+  line-height: 20px;
+  background-color: #ff6b6b;
+  display: none;
+}
+.dec {
+  display: block;
+  width: 17px;
+  height: 17px;
+  overflow: hidden;
+  position: absolute;
+}
+.dec s {
+  font-family: simsun;
+  font-size: 12px;
+  width: 17px;
+  height: 17px;
+  line-height: 21px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-decoration: none;
+}
+.dec .dec1 { color: #ff6b6b; }
+.dec .dec2 { color: #ff6b6b; }
+/* 错误框 */
+.validError,
+.Validform_error {
+  border: 1px solid #f00 !important;
+  background-color: rgba(255, 107, 107, 0.2) !important;
+ *background-color:#ffe1e1 !important;
+}
+/* 复选和单选框样式 */
+.validForm .checkboxGroup,
+.validForm .radioGroup {
+  border-radius: 4px;
+  padding-bottom: 5px;
+}
+/* 提示框样式 */
+.validForm *::-webkit-input-placeholder {
+ color: #ccc !important;
+}
+.validForm *:-moz-placeholder {
+ color: #ccc !important;
+}
+.validForm *::-moz-placeholder {
+ color: #ccc !important;
+}
+.validForm *:-ms-input-placeholder {
+ color: #ccc !important;
+}

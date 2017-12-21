@@ -1,0 +1,35 @@
+.el-button--primary:active{
+  background-color: #1abc9c;
+}
+.el-button--primary:focus, .el-button--primary:hover{
+  background-color: #1abc9c;
+  border-color: #1abc9c;
+}
+.el-select{
+  width: 100%;
+}
+.el-select-dropdown__item.selected{
+  background-color: #1abc9c;
+}
+.el-select-dropdown__item.selected.hover {
+    background-color: #1abc9c;
+}
+.el-select ,.el-input .el-input__inner:focus{
+  border-color: #1abc9c;
+}
+.el-button--primary{
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+    width: 100%;
+}
+.el-button--primary:hover{
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+}
+.errredadmin input{
+  border: 1px solid #f00 !important;
+  background-color: rgba(255, 107, 107, 0.2) !important;
+}
+.el-input__inner:focus{
+  border-color: #1abc9c;
+}
