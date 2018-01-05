@@ -1,24 +1,23 @@
 export default{
-    // url : 'https://www.xytzq.cn:9443/tzq/',
-    // studentUrl:'https://www.xytzq.cn/student/index/index.html#home?',
-    // adminUrl:'https://www.xytzq.cn/orgmanage/index.html',
-    // scoreUrl:'https://www.xytzq.cn/pcproject.html#/home',
-    // currenturl : 'https://www.xytzq.cn',
-    // webSockentUrl:'wss://www.xytzq.cn:9443/tzq/webSocketServer',
-    // projectRoomUrl:'https://www.xytzq.cn/student/projectroom/index-tzr.html',
-    // viewUrl:'https://www.xytzq.cn/orgmanage',  //预览的地址
+    // url: 'http://test.xytzq.cn:9443/tzq/',
+    // studentUrl:'http://test.xytzq.cn/student/index/index.html#home?',
+    // adminUrl:'http://test.xytzq.cn/orgmanage/index.html',
+    // scoreUrl:'http://test.xytzq.cn/pcproject.html#/home',
+    // currenturl: 'http://test.xytzq.cn',
+    // webSockentUrl:'wss://test.xytzq.cn:9443/tzq/webSocketServer',
+    // projectRoomUrl:'http://test.xytzq.cn/student/projectroom/index-tzr.html',
+    // viewUrl:'http://test.xytzq.cn/orgmanage',  //预览的地址
 
-    url : 'https://www.xytzq.cn:9443/tzq/',
-    // url: 'http://192.168.1.195:8080/tzq/',
-    studentUrl:'https://www.xytzq.cn/student/index/index.html#home?',
-    studentUrlGo:'https://www.xytzq.cn/student/index/index.html#home',
-    adminUrl:'https://www.xytzq.cn/orgmanage/index.html',
-    scoreUrl:'http://192.168.1.124/pcproject.html#/home',
-    currenturl : 'https://www.xytzq.cn',
-    webSockentUrl:'ws://192.168.1.194:8080/tzq/webSocketServer',
-    projectRoomUrl:'https://www.xytzq.cn/student/projectroom/index-tzr.html',
-    personrequirementUrl:'http://192.168.1.194/student/index/index.html#demand_under?',
-    viewUrl:'https://www.xytzq.cn/orgmanage',  //预览的地址
+    url: 'http://test.xytzq.cn:9199/tzq/',
+    studentUrl:'http://test.xytzq.cn/student/index/index.html#home?',
+    studentUrlGo:'http://test.xytzq.cn/student/index/index.html#home',
+    adminUrl:'http://test.xytzq.cn/orgmanage/index.html',
+    scoreUrl:'http://192.168.1.120/pcproject.html#/teaching',
+    currenturl: 'http://192.168.1.120/',
+    webSockentUrl:'wss://www.xytzq.cn:9443/tzq/webSocketServer',
+    projectRoomUrl:'http://test.xytzq.cn/student/projectroom/index-tzr.html',
+    personrequirementUrl:'http://test.xytzq.cn/student/index/index.html#demand_under?',
+    viewUrl:'http://test.xytzq.cn/orgmanage',  //预览的地址
 
     checked:'',
     nochecked:'',
@@ -36,4 +35,5 @@ export default{
     indextosapienstradname:'',
     indextohotprojectstageid:'',
     indextohotprojectstagename:'',
+    pcprojectTeachingHeight:'',
 }

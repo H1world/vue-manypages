@@ -1,37 +1,5 @@
 <template lang="html">
   <div class="main">
-    <div class="user-home">
-      <div class="container">
-        <div class="user-information">
-            <div class="userphoto">
-              <img :src="user.userimage" alt="">
-            </div>
-            <div class="usercontent">
-              <div class="username">
-                <span>{{user.username}}</span>
-                <button type="button" name="button">未认证<i></i></button>
-              </div>
-              <div>
-                <p>{{user.orglist[0].provincename}} - {{user.orglist[0].cityname}}</p>
-                <p>{{user.orglist[0].orgname}} - {{user.orglist[0].collegename}}</p>
-              </div>
-            </div>
-          <div class="usernew-right">
-            <div class="newright">
-              <span>总赛事数量：{{tongj.totalgamenumber}}</span>
-              <span>已评赛事：{{tongj.pinggamenumber}}</span>
-              <span>未评赛事：{{tongj.nopinggamenumber}}</span>
-            </div>
-            <div class="newright">
-              <span>总项目数量：{{tongj.totalprojectnumber}}</span>
-              <span>已评项目：{{tongj.pingprojectnumber}}</span>
-              <span>未评项目：{{tongj.nopingprojectnumber}}</span>
-              <span>暂存项目：{{tongj.saveprojectnumber}}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="mainsize">
       <div class="projectgame-list">
         <div class="list-query">
@@ -126,9 +94,6 @@ export default {
     return{
       token:Base64.decode(localStorage.getItem('token')),
       accountid:Base64.decode(localStorage.getItem('accountid')),
-      user:'',                                            //评委个人信息（用于头部）
-      tongj:'',                                           //评委个人评审的统计信息
-      getyso:'',                                          //年代、状态以及组织列表
       yearvalue:0,                                        //年代
       statevalue:0,                                       //状态
       organizavalue:0,                                    //组织
@@ -136,15 +101,14 @@ export default {
       states:[{}],                                        //状态容器
       organizas:[{}],                                     //组织容器
       ProjectGameList:'',
+      provincename: '',
+      cityname: '',
+      orgname: '',
+      collegename: '',
     }
   },
   mounted(){
-    this.getUserInformation();
-    this.getUserTj();
     this.getYSO();
-    // localStorage.setItem('token', this.$route.params.token);
-    // localStorage.setItem('accountid', this.$route.params.accountid);
-
     if(this.$store.state.yearvalue == ''){
       this.$store.state.yearvalue = 0;
     }
@@ -160,20 +124,6 @@ export default {
     this.getProjectGameList(this.$store.state.yearvalue,this.$store.state.statevalue,this.$store.state.organizavalue);
   },
   methods:{
-    //获取用户头像
-    getUserInformation(){
-      this.$http.post(this.$store.state.url+'pc/person/getMyBrieflyInfo', {accountid :this.accountid},  {emulateJSON: true,headers:{'xytoken':this.token}}).then((response) => {    
-      this.info = JSON.stringify(response.data, null, 4);
-        this.user = response.data.data;
-    })
-    },
-    //获取数量
-    getUserTj(){
-      this.$http.post(this.$store.state.url+'pc/project/game/getRaterGameTotalInfoByRaterId', {},  {emulateJSON: true,headers:{'xytoken':this.token}}).then((response) => {    
-      this.info = JSON.stringify(response.data, null, 4);
-        this.tongj = response.data.data;
-      })
-    },
   //获取查询条件
     getYSO(){
       this.$http.post(this.$store.state.url+'pc/project/game/getProjectGameSearchCondition', {},  {emulateJSON: true,headers:{'xytoken':this.token}}).then((response) => {    

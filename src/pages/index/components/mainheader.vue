@@ -4,7 +4,7 @@
       <div class="container">
         <!--Logo-->
         <div class="navbar-header">
-          <a class="navbar-brand" href="http://www.xytzq.cn/"><img alt="投智圈" src="../assets/logo.png"></a>
+          <a class="navbar-brand" href="http://192.168.1.120"><img alt="投智圈" src="../assets/logo.png"></a>
         </div>
         <!--菜单-->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -20,16 +20,16 @@
           <!--未登录-->
           <ul class="nav navbar-nav navbar-right" v-if='ifUserNoLogin'>
             <li>
-              <li><a href='http://192.168.1.124/login.html#/'>登录</a></li>
+              <li><a href='http://192.168.1.120/login.html#/'>登录</a></li>
             </li>
-            <li role="presentation" class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">注册申请 <span class="caret"></span></a>
-              <ul class="dropdown-menu">
+            <li role="presentation" class="dropdown" v-on:mouseleave='nologinHover()'>
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" v-on:mouseenter='nologinHoverShow()'>注册申请 <span class="caret"></span></a>
+              <ul class="dropdown-menu" v-if='loginNoHover'>
                 <div class="plug"><span class="caret"></span></div>
                 <li></li>
-                <li><a href='http://192.168.1.124/login.html#/scrolladminregister'>校管理员申请</a></li>
-                <li><a href='http://192.168.1.124/login.html#/teacheradminregister'>教师试用申请</a></li>
-                <li><a href='http://192.168.1.124/login.html#/studentadminregister'>项目团队注册</a></li>
+                <li><a href='http://192.168.1.120/login.html#/scrolladminregister'>校管理员申请</a></li>
+                <li><a href='http://192.168.1.120/login.html#/teacheradminregister'>教师试用申请</a></li>
+                <li><a href='http://192.168.1.120/login.html#/studentadminregister'>项目团队注册</a></li>
                 <li></li>
               </ul>
             </li>
@@ -69,13 +69,14 @@
 <script>
 import '../login-jq/website.css';
 import '../login-jq/jquery.min.js';
-import '../login-jq/header.js'
+// import '../login-jq/header.js'
 let Base64 = require('js-base64').Base64;
 export default {
   data(){
     return{
       ifUserLogin:false,  // false
       ifUserNoLogin:false,  // true
+      loginNoHover:false,
       accountid:'',
       orgid:'',
       token:'',
@@ -174,6 +175,12 @@ export default {
 
     })
     },
+    nologinHoverShow(){
+      this.loginNoHover = true;
+    },
+    nologinHover(){
+      this.loginNoHover = false;
+    },
     signOut(){
       this.$cookie.delete('Pc_V_Save_token');
       this.$cookie.delete('Pc_V_Save_roleid');
@@ -181,7 +188,13 @@ export default {
       this.$cookie.delete('Pc_V_Yes_login');
       sessionStorage.removeItem('Pc_V_Yes_login');
       // window.location.href=this.$store.state.currenturl;
-      this.$router.go(0);
+      console.log(1);
+      // return;
+      // this.$router.go(0);
+
+      this.ifUserLogin = false;
+      this.ifUserNoLogin = true;
+      // window.history.go(0);
     },
     signGo(){
       //
@@ -324,5 +337,16 @@ export default {
   }
   .dropdown{
     cursor:pointer !important;
+  }
+  .dropdown-menu{
+    display: block !important;
+    li{
+      a{
+        color:#fff !important;
+      }
+      a:hover{
+        background: #1abc9c !important;
+      }
+    }
   }
 </style>

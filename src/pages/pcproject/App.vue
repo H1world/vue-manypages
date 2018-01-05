@@ -2,10 +2,10 @@
   <div id="app">
     <v-headtop></v-headtop>
     <!-- <div class="iscontent"> -->
-    <!-- <keep-alive> -->
-      <router-view></router-view>
-      <!-- <router-view v-if="$route.meta.keepAlive"></router-view> -->
-    <!-- </keep-alive>
+    <router-view></router-view>
+    <!-- <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
     <router-view v-if="!$route.meta.keepAlive"></router-view> -->
     <!-- </div> -->
     <!-- 底部 -->

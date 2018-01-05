@@ -50,4 +50,7 @@ export default{
   getTradeData(state,getTradeData){
     state.getTradeData = getTradeData
   },
+  pcprojectTeachingHeight(state, pcprojectTeachingHeight) {
+    state.pcprojectTeachingHeight = pcprojectTeachingHeight
+  },
 }

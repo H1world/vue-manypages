@@ -10,7 +10,7 @@
               <el-tabs v-model="activeName">
                 <el-tab-pane name="first"><span slot="label" @click='clicktableone(1)'>项目团队</span></el-tab-pane>
                 <el-tab-pane name="second"><span slot="label" @click='clicktabletwo(2)'>管理员</span></el-tab-pane>
-                <el-tab-pane name="third"><span slot="label" @click='clicktablethree(3)'>投智人</span></el-tab-pane>
+                <el-tab-pane name="third"><span slot="label" @click='clicktablethree(3)'>评委</span></el-tab-pane>
               </el-tabs>
               <div class="error" v-show='errorstate'><i class="fa fa-exclamation-circle"></i> 您输入的用户名和密码不匹配，请重新输入！</div>
               <!--项目团队-->
@@ -27,8 +27,10 @@
                       <input class="form-control noEmpty length(6-20) letter digit" maxlength="20" type="password" placeholder="请输入您的密码" :class="{errred:passworderror}" v-model='passwordnum1'>
                     </div>
                     <div class="form-group ovh">
-                      <input class="fl" type="checkbox" v-model="studentCheackIdea" @click='alocked(studentCheackIdea)'>
-                      <span>7天内自动登录</span>
+                      <div v-if='sevenstate'>
+                        <input class="fl" type="checkbox" v-model="studentCheackIdea" @click='alocked(studentCheackIdea)'>
+                        <span>7天内自动登录</span>
+                      </div>
                       <router-link :to="{path:'/forgotpassword'}" class="fr">忘记密码？</router-link>
                     </div>
                     <div class="form-group mbm">
@@ -53,8 +55,10 @@
   							<input class="form-control noEmpty length(6-20) letter digit" maxlength="20" type="password" placeholder="请输入您的密码" v-model='passwordnum2' :class="{errred:passworderror2}">
   							</div>
   							<div class="form-group ovh">
-  								<input class="fl" type="checkbox" v-model="adminCheackIdea" @click='alocked2(adminCheackIdea)'>
-  								<span>7天内自动登录</span>
+                  <div v-if='sevenstate'>
+                    <input class="fl" type="checkbox" v-model="adminCheackIdea" @click='alocked2(adminCheackIdea)'>
+    								<span>7天内自动登录</span>
+                  </div>
   								<!--<a class="fr" href="../login/findPD.html">忘记密码？</a>-->
   							</div>
   							<div class="form-group mbx">
@@ -80,8 +84,10 @@
   								<input class="form-control noEmpty length(6-20) letter digit" maxlength="20" type="password" placeholder="请输入您的密码" v-model='passwordnum3' :class="{errred:passworderror3}">
   							</div>
   							<div class="form-group ovh">
-  								<input class="fl" type="checkbox" v-model="judgesCheackIdea" @click='alocked3(judgesCheackIdea)'>
-  								<span>7天内自动登录</span>
+                  <div v-if='sevenstate'>
+                    <input class="fl" type="checkbox" v-model="judgesCheackIdea" @click='alocked3(judgesCheackIdea)'>
+    								<span>7天内自动登录</span>
+                  </div>
                   <router-link :to="{path:'/forgotpassword'}" class="fr">忘记密码？</router-link>
   							</div>
   							<div class="form-group mbm">
@@ -183,8 +189,8 @@ import '../login-jq/bootstrap.css';
 import '../login-jq/flat-ui.css';
 import '../login-jq/font-awesome.min.css';
 import '../login-jq/site.css';
-import '../login-jq/fantaStyle.css'
-import '../login-jq/component.css'
+import '../login-jq/fantaStyle.css';
+import '../login-jq/component.css';
 
 let Base64 = require('js-base64').Base64;
 export default {
@@ -229,6 +235,7 @@ export default {
       iforgidNull:false,
       apphelp:false,
 
+      sevenstate:true,
     }
   },
   methods:{
@@ -525,9 +532,20 @@ export default {
 
         };
     },
+    //配置是否显示七天.
+    getlocalsevendata(){
+      this.$http.get(this.$store.state.currenturl+'static/datas/sevenday.json',{emulateJSON: true}).then((response) => {this.info = JSON.stringify(response.data, null, 4);
+        if(response.data.sevenstate == true){
+          this.sevenstate = true;
+        }else{
+          this.sevenstate = false;
+        }
+      })
+    }
   },
   mounted(){
     this.gettoken();
+    this.getlocalsevendata();
     sessionStorage.setItem('theTableCode','1');
     //点击回车
       window.onkeydown = (event) => {

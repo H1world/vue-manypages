@@ -57,29 +57,27 @@ export default {
       };
     },
   methods:{
-  	
+
   	//获取是否显示其他评委成绩
     getGameShowScore(){
       this.$http.post(this.$store.state.url+'pc/project/game/getProjectGameConfigKeyValue', {'projectgameid':this.projectgameid,'key':'scoreshow'},  {emulateJSON: true,headers:{'xytoken':this.token}}).then((response) => {    
       this.info = JSON.stringify(response.data, null, 4);
         // this.resourcelisted = response.data.data;  如果是1就是小数点     0就是 整数
-        console.log(response.data.data.value);
+        // console.log(response.data.data.value);
         if(response.data.data.value == 1){
           this.showraterscore=1;
         }
         if(response.data.data.value == 0){
           this.showraterscore = 0;
         }
-        console.log(this.showraterscore)
+        // console.log(this.showraterscore)
       })
     },
     //获得某个赛事，某个项目，所有评委的给的分数以及评语
     getScoreAndAdvise(){
       this.$http.post(this.$store.state.url+'pc/project/game/getProjectAllRaterScoreAndAdvise', {'projectgameid':this.projectgameid,'projectid':this.projectid,'flag':1},  {emulateJSON: true,headers:{'xytoken':this.token}}).then((response) => {    
       this.info = JSON.stringify(response.data, null, 4);
-      
-      console.log(this.info);
-      
+
         let arr=[];
         this.scoreChartData = response.data.data.currentraterscorelist.criteriascorelist;
         if(this.scoreChartData == ''){
@@ -90,16 +88,16 @@ export default {
           }
         };
         this.scoreData = arr;
-        
+
         //var arrraterscoreList=[];
         this.scorelist=[];
-        
+
           this.scoreZf = response.data.data.currentraterscorelist.raterscore;
           for(let i in response.data.data.raterscorelist){
             if(response.data.data.raterscorelist[i].orglist[0] == undefined){
               response.data.data.raterscorelist[i].orglist[0] = '';
             }
-            console.log(response.data.data);
+            // console.log(response.data.data);
             if(response.data.data.showraterscore==0)
             {
             	if(this.accountid==response.data.data.raterscorelist[i].accountid)
@@ -110,8 +108,8 @@ export default {
             else
             	this.scorelist.push(response.data.data.raterscorelist[i]);
           }
-          
-          
+
+
           //this.scorelist = response.data.data.raterscorelist;
           //
           var myChart = echarts.init(document.getElementById('mainscore'));

@@ -2,9 +2,10 @@
   <div class="istophead">
     <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo xy-topul" mode="horizontal"  @select="handleSelect">
       <div class="logo">
-        <a href="https://www.xytzq.cn/"><img src="../assets/logo.png" alt=""></a>
+        <a href="http://192.168.1.120"><img src="../assets/logo.png" alt=""></a>
       </div>
-      <el-menu-item index="1"><router-link :to="{path:'/home'}">首页</router-link></el-menu-item>
+      <router-link :to="{path:'/teaching'}"><el-menu-item index="1">教学</el-menu-item></router-link>
+      <router-link :to="{path:'/homecontent'}"><el-menu-item index="2">评审</el-menu-item></router-link>
       <!-- <el-menu-item index="2">分析</el-menu-item> -->
       <div class="userportrait">
         <div class="xyuserzp">
@@ -29,7 +30,7 @@ let Base64 = require('js-base64').Base64;
 export default {
   data () {
     return {
-      activeIndex: '1',
+      activeIndex: '',
       token:Base64.decode(localStorage.getItem('token')),
       accountid:Base64.decode(localStorage.getItem('accountid')),
       username:'',
@@ -58,6 +59,16 @@ export default {
 
   mounted(){
     this.getUserInformation();
+    if(this.$route.path == '/teaching'){
+      this.activeIndex = '1';
+    };
+    if(this.$route.path == '/homecontent'){
+      this.activeIndex = '2';
+    };
+    var routepath = this.$route.path;
+    if(routepath.indexOf("/teaching") >= 0 ){
+      this.activeIndex = '1';
+    } 
   },
 
 }

@@ -54,7 +54,7 @@
 					<a class="more" @click='allStage()'>全部信息 <i class="fa fa-angle-double-right"></i></a>
 				</div>
 				<div class="row">
-					<div class="col-md-4" v-for='indexhot in 6'>
+					<div class="col-md-4" v-for='indexhot in 3'>
 						<router-link target="_blank" :to="{path:'/hotprojectdetailed/'+hotprojectid[indexhot-1]+''}">
 							<div class="section-logo">
 								<img :src="hotimg[indexhot-1]">
@@ -71,6 +71,26 @@
 							</div>
 						</router-link>
 					</div>
+          </div>
+          <div class="row">
+          <div class="col-md-4" v-for='indexhot in 3'>
+            <router-link target="_blank" :to="{path:'/hotprojectdetailed/'+hotprojectid[indexhot+2]+''}">
+              <div class="section-logo">
+                <img :src="hotimg[indexhot+2]">
+              </div>
+              <div class="section-title">
+                <h4>{{hotname[indexhot+2]}}</h4>
+                <p>{{hotfrominfo[indexhot+2]}} {{hotorgname[indexhot+2]}}</p>
+                <ul class="tags">
+                  <li v-for='hottech in hottechnology[indexhot+2]'>
+                    <!-- <i v-for='hottech2 in hottech.technologylist'>{{hottech2.technologyname}}</i> -->
+                    {{hottech.technologyname}}
+                  </li>
+                </ul>
+              </div>
+            </router-link>
+          </div>
+
 
 				</div>
 			</section>
@@ -78,7 +98,7 @@
     <!-- 待续 -->
     		<div class="footer-nav">
 			<div class="container">
-				
+
 				<ul>
 					<h4>关于我们</h4>
 					<li><a target="_blank" href="/about/about_pc.html">了解投智圈</a></li>
@@ -95,7 +115,7 @@
 					<li><a target="_blank" href="/help/teacher.html">导师管理员操作</a></li>
 					<li><a target="_blank" href="/help/student.html">项目报名操作</a></li>
 				</ul>
-				
+
 				<div class="fr">
 					<img src="../assets/qrcode.jpg">
 					<span>微信公众号</span>
@@ -104,7 +124,7 @@
 					<img src="../assets/downloadApp.png">
 					<span>APP下载</span>
 				</div>
-				
+
 			</div>
 		</div>
   </div>
@@ -243,12 +263,12 @@ export default {
 					this.hotfromcity.push(this.indexHotproject[i].cityname);
 					this.hotorgname.push(this.indexHotproject[i].orgname);
 					this.hottechnology.push(this.indexHotproject[i].technologylist);
-					
+
 					// for(let j in this.indexHotproject[i].technologylist){
 					// }
 				 }
         //  console.log(this.hottechnology);
-				 
+
         })
 		},
   },

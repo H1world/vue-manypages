@@ -6,6 +6,15 @@
   padding:0;
   font-family: "Microsoft YaHei";
 }
+body{
+  -webkit-user-select:none;
+
+   -moz-user-select:none;
+
+   -ms-user-select:none;
+
+   user-select:none;
+}
 ::-webkit-scrollbar
 {
     width: 2px;
@@ -65,18 +74,20 @@ body{
       background: @maincolor;
     }
     .el-menu-item:hover{
-      color:@maincolor;
+      color:@maincolor !important;
       border-bottom:none;
+      background:none;
     }
     .is-active:hover{
-      color:#fff;
+      color:#fff !important;
+      background:@maincolor !important;
     }
     .el-menu--horizontal .el-menu-item{
       border-bottom:none;
       height: 100%;
       line-height: 53px;
       font-size: 16px;
-
+      color:#fff;
     }
   }
 
@@ -158,10 +169,28 @@ body{
             background-color: #ffffff;
             border-radius: 50px;
             border: 3px solid rgba(255, 255, 255, .2);
+            position: relative;
             img{
               width: 100%;
               height: 100%;
               border-radius: 50%;
+            }
+            .vip{
+              background-size: 24px auto;
+              width: 24px;
+              height: 24px;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              margin: 0!important;
+              background-position: 0 0;
+              background-repeat: no-repeat;
+            }
+            .vip2{
+              background-image: url(../../assets/vip1.png);
+            }
+            .vip3{
+              background-image: url(../../assets/vip2.png);
             }
           }
           .userphoto-2{
@@ -279,4 +308,13 @@ body{
 .el-button--default:active {
     background-color: #7f8c8d !important;
     color:#fff !important;
+}
+//教学
+.iscontent{
+    width: 1170px;
+    margin: 0 auto;
+    .teachingcontent{
+    overflow-y: auto;
+    width: 70%;
+  }
 }

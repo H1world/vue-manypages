@@ -15,7 +15,7 @@ body {
 ::-moz-selection{
     background-color:#00d7c6;
     color:#fff;
-    
+
 }
 footer{
     bottom: 0;
@@ -313,7 +313,7 @@ li.dropdown ul.dropdown-menu {
 	position: absolute;
 	top: 1px;
 	right: 15px;
-	
+
     border-top: 0;
 	border-left: 10px solid transparent;
     border-right: 10px solid transparent;
@@ -561,6 +561,8 @@ position:relative;
 	font-size: 12px;
 	display: block;
 	width: 100%;
+  margin-top: 0px;
+      padding-top: 0;
 }
 .section-website .section-name,
 .section-website a .section-img,
@@ -922,8 +924,9 @@ position:relative;
 }
 .aside-right .name span,
 .right-list .name span {
-	color: #34495e;
+	  color: #34495e;
     font-size: 14px;
+    display: block;
 }
 .section-name .aside-right .name *,
 .right-list .aside-right .name * {

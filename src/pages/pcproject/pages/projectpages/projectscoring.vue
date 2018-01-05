@@ -268,18 +268,19 @@ export default {
       let scorelist = JSON.stringify(criteriascorelist);
       this.$http.post(this.$store.state.url+'pc/project/game/addProjectGameScoreAndAdvise', {projectgameid:this.projectgameid,projectid:this.projectid,score:this.demosum,criteriascorelist:scorelist,advise:this.textareatext,raterid:this.accountid,status:status},  {emulateJSON: true,headers:{'xytoken':this.token}}).then((response) => {
       this.info = JSON.stringify(response.data, null, 4);
-      if(response.data.result == "endping"){
+      // console.log(response.data);
+      if(response.data.result != "success"){
         if(status == 1){
           this.$message({
           showClose: true,
-          message: '评分已结束，不能暂存成绩',
+          message: response.data.describe,
           type: 'error'
           });
         };
         if(status == 2){
           this.$message({
           showClose: true,
-          message: '评分已结束，不能提交成绩',
+          message: response.data.describe,
           type: 'error'
           });
         }
@@ -366,7 +367,7 @@ export default {
     .tabletitle{
       display:inline-block;
       font-style:normal;
-      width: 250px;
+      width: 100%;
     }
   }
 }

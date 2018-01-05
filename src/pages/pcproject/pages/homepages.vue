@@ -1,22 +1,31 @@
 <template lang="html">
   <div class="">
-    <!-- <v-headtop></v-headtop> -->
+    <v-pubilctop></v-pubilctop>
     <div class="iscontent">
-      <router-view></router-view>
+      <router-view v-if="!$route.meta.keepAlive"></router-view>
+      <keep-alive>
+        <router-view v-if="$route.meta.keepAlive"></router-view>
+      </keep-alive>
+      <!-- <router-view></router-view> -->
     </div>
   </div>
 </template>
 
 <script>
-import headtop from '../components/tophead.vue';
+import pubilctop from '../components/public-teachingandhome-top.vue';
 export default {
   data(){
     return{}
   },
+  
   components: {
-    'v-headtop':headtop,
+    'v-pubilctop':pubilctop,
   },
 
+  beforeMount(){
+    var isheight = document.body.clientHeight;
+    this.$store.commit('pcprojectTeachingHeight',isheight)
+  }
 }
 </script>
 

@@ -7,26 +7,45 @@ import matchhome from '../pages/matchhome/matchhome'
 import projectindex from '../pages/projectpages/projectindex'
 import essentialnew from '../pages/projectpages/projectessentialnew'
 import Modifypassword from '../components/Modifypassword'
-
+//教学
+import teaching from '../pages/teaching/teachindex'
+import teachingindex from '../pages/teaching/teachingindex'
+import teachingcourse from '../pages/teaching/teachingcourse'
+import foundcourse from '../pages/teaching/course/foundcourse'
 
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   component: login
-    // },
     {
       path: '/home',
       component: home,
       children:[
-        {path:'/',
-        meta: {
-          // keepAlive: true,
+        {path:'/teaching',
+          component: teaching,
+          children: [
+            {
+              path: '/',
+              component: teachingindex,
+            },
+            {
+              path: '/teaching/teachingcourse',
+              component: teachingcourse,
+            },
+            {
+              path: '/teaching/foundcourse',
+              component: foundcourse,
+            },
+          ]
         },
-        component:homecontent}
+        {
+          path: '/homecontent',
+          meta: {
+            keepAlive: true,
+          },
+          component: homecontent
+        },
       ]
     },
     {
